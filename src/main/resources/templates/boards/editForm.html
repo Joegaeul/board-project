@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+  <style>
+    .container {
+      max-width: 560px;
+    }
+    .field-error {
+      border-color: #dc3545;
+      color: #dc3545;
+    }
+  </style>
+</head>
+<body>
+  <h2>상품 수정</h2>
+  <form th:action th:method="post" th:object="${board}">
+    <div>
+      <label for="title">제목</label>
+      <input type="text" id="title" th:field="*{title}"
+             th:errorclass="field-error" placeholder="제목을 입력하세요.">
+      <div class="field-error" th:errors="*{title}"></div>
+    </div>
+    <div>
+      <label for="name">작성자</label>
+      <input type="text" id="name" th:field="*{name}"
+             th:errorclass="field-error" placeholder="작성자를 입력하세요.">
+      <div class="field-error" th:errors="*{name}"></div>
+    </div>
+    <div>
+      <label for="contents">내용</label>
+      <input type="text" id="contents" th:field="*{contents}"
+             th:errorclass="field-error" placeholder="내용을 입력하세요.">
+      <div class="field-error" th:errors="*{contents}"></div>
+    </div>
+    <div>
+      <button type="submit">저장</button>
+      <button type="button" th:onclick="|loacion.href=@{/boards}|">취소</button>
+    </div>
+  </form>
+</body>
+</html>

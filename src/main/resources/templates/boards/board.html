@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+</head>
+<body>
+<form action="" th:method="post">
+  <h2>게시판 상세</h2>
+  <h2 th:if="${param.status}" th:text="'저장 완료'"></h2>
+  <div>
+    <label for="boardId">게시판 ID</label>
+    <input type="text" id="boardId" th:value="${board.id}">
+
+  </div>
+  <div>
+    <label for="title">제목</label>
+    <input type="text" id="title" th:value="${board.title}">
+  </div>
+  <div>
+    <label for="name">작성자</label>
+    <input type="text" id="name" th:value="${board.name}">
+  </div>
+  <div>
+    <label for="contents">내용</label>
+    <input type="text" id="contents" th:value="${board.contents}">
+  </div>
+  <div>
+    <div>
+      <button type="button"
+            th:onclick="|location.href='@{/boards/{boardId}/edit(boardId=${board.id})}'|">
+            게시판 수정
+      </button>
+      <input type="hidden" value="DELETE">
+      <button type="button" th:onclick="|location.href='@{/boards/{boardId}/delete(boardId=${board.id})}'|">
+        게시판 삭제
+      </button>
+      <button type="button" th:onclick="|location.href='@{/boards}'|">
+        목록으로
+      </button>
+    </div>
+  </div>
+</form>
+</body>
+</html>

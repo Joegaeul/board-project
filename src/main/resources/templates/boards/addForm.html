@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+  <style>
+    .container {
+      max-width: 560px;
+    }
+    .field-error {
+      border-color: #dc3545;
+      color: #dc3545;
+    }
+  </style>
+</head>
+<body>
+  <h2 th:text="#{page.addItem}">게시판 등록</h2>
+  <form th:action="@{/boards/add}" th:object="${board}" method="post">
+    <div>
+      <label th:text="#{label.board.title}" for="title">제목</label>
+      <input type="text" id="title" th:field="*{title}" th:errorclass="field-error" placeholder="제목을 입력하세요.">
+      <div class="field-error" th:errors="*{title}"></div>
+    </div>
+    <div>
+      <label th:text="#{label.board.name}" for="name">작성자</label>
+      <input type="text" id="name" th:field="*{name}"
+             th:errorclass="field-error" placeholder="작성자를 입력하세요.">
+      <div class="field-error" th:errors="*{name}"></div>
+    </div>
+    <div>
+      <label th:text="#{label.board.contents}" for="contents">내용</label>
+      <input type="text" id="contents" aria-setsize="50" th:field="*{contents}"
+             th:errorclass="field-error" placeholder="내용을 입력하세요.">
+      <div class="field-error" th:errors="*{contents}"></div>
+    </div>
+    <div>
+      <button th:text="#{button.save}"type="submit">저장</button>
+      <button th:text="#{button.cancel}" type="button" th:onclick="|location.href='@{/boards}'|">취소</button>
+    </div>
+  </form>
+</body>
+</html>
